@@ -1,7 +1,7 @@
 class Lista<T> {
     class Nodo {
-        private T data;
-        private Nodo next;
+        protected T data;
+        protected Nodo next;
          
         public Nodo(T data) {
             this.data = data;
@@ -20,7 +20,7 @@ class Lista<T> {
         public void  setNext(Nodo next) { this.next = next; }
     }
 
-    private Nodo head;
+    protected Nodo head;
 
     public Lista() { this.head = null; }
 
@@ -84,4 +84,14 @@ class Lista<T> {
             scan.setNext(scan.getNext().getNext());
         }
     }
+
+    public void stampa() {
+        Nodo scan = this.head;
+        while (scan != null) {
+            System.out.print(scan.getData() + " ");
+            scan = scan.getNext();
+        }
+        System.out.println();
+    }
+
 }
