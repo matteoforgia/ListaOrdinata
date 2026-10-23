@@ -19,21 +19,30 @@ public class ListaOrdinabile<T extends Comparable<T>> extends Lista<T> {
         }
     }
 
-    public void swap(int i, int j){
-        T temp = this.get(i);
-        super.insert(this.get(j), i);
-        super.insert(temp, j);
+    public void swap(int i, int j) {
+        if (i == j) return;
 
+        int min = Math.min(i, j);
+        int max = Math.max(i, j);
+        T first = get(i);
+        T second = get(j);
+
+        super.remove(max);
+        super.remove(min);
+        super.insert(second, min);
+        super.insert(first, max);
     }
     
     public void sort(){
-        for(int i = 0; i<length()-1; i++){
-            for (int j = 0; j < length()-1; j++) {
-                if(get(i).compareTo(get(j)) > 0){
-                    swap(i, j);
+        int l = this.length();
+        for (int i = 0; i < l - 1; i++) {
+            for (int j = 0; j < l - i - 1; j++) {
+                if (this.get(j).compareTo(this.get(j + 1)) > 0) {
+                    this.swap(j, j + 1);
                 }
             }
         }
+        this.isSorted = true;
     }
 
     @Override
