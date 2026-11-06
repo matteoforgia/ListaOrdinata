@@ -56,5 +56,4 @@ public class ListaOrdinabile<T extends Comparable<T>> extends Lista<T> {
         this.isSorted = false;
         super.add(element);
     }
-
 }
